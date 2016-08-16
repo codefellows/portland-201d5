@@ -1,0 +1,20 @@
+* {
+  outline: dotted orange;
+}
+
+h1, h2 {
+  font-size: 15px;
+}
+
+p {
+  padding: 25px 0px !important;
+}
+
+div.container {
+  width: 800px;
+  margin: 0 auto;
+}
+
+p strong {
+  color: blue;
+}
