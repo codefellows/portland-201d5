@@ -1,9 +1,53 @@
-# Class 7: Object-Oriented Programming with Constructor Functions; HTML Tables
+<a id="top"></a>
+# Today's Plan: Week 2, Tuesday Lecture
 
-**Learning Objectives**
+- Announcements
+- [Code Review](#codereview)
+- [Go over the assigned readings](#readings)
+- [Code demo](#code)
 
-As a result of completing Day 7 of Code 201, students will:
+# Readings
 
-- Be able to translate an object literal into a constructor function, as measured by successful completion of the daily code assignment
-- Be able to use the ‘prototype’ property to extend the inheritable properties and methods of a constructor function, as measured by successful completion of the daily code assignment
-- Be able to dynamically build an HTML table with JavaScript and render it to the DOM, as measured by successful completion of the daily code assignment
+- HTML Chapter 6: "Tables"
+- HTML Chapter 13: "Boxes" (CSS)
+
+---
+
+<a id="codereview"></a>
+### Code Review
+
+We'll do code reviews to begin class most days
+
+[-top-](#top)
+
+---
+
+<a id="readings"></a>
+### Go over the assigned readings
+
+**HTML Chapter 6: "Tables"**
+
+- p.131: Basic table structure
+- p.132: Table headings
+- p.133: Spanning columns & rows
+
+**HTML Chapter 13: "Boxes" (CSS)**
+
+- p.303: Box width, height, overflow
+- p.307: Border, margin, & padding
+- p.308: Border width, style, & color
+- p.315: Centering content
+- p.317: Changing inline/block
+- p.318: Visibility
+- p.321: Additional border topics (border images, box shadow, border radius)
+
+[-top-](#top)
+
+---
+
+<a id="code"></a>
+### Live code
+
+This code demo is to help students be ready to complete the assignment, and also to show off some functionality of the REPL and Chrome Developer Tools.
+
+[-top-](#top)

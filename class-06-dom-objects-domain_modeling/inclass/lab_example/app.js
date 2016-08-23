@@ -19,7 +19,6 @@ var pike = {
     var ul = document.createElement('ul');
     var li = document.createElement('li');
     var h2 = document.createElement('h2');
-    var main = document.getElementById('store_info');
 
     h2.textContent = 'Pike';
     li.textContent = 'Total: ' + this.totalCookies;
@@ -27,6 +26,7 @@ var pike = {
     ul.appendChild(h2);
     ul.appendChild(li);
 
+    var main = document.getElementById('store_info');
     main.appendChild(ul);
   }
 };
