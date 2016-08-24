@@ -1,6 +1,26 @@
 'use strict';
 
 console.log('hi');
+//comment array
+var comments = [];
+//comment constructor
+function Comment(name, text) {
+  this.name = name;
+  this.text = text;
+  //new comment pushes itself to comment array
+  comments.push(this);
+}
+
+//render method
+Comment.prototype.render = function() {
+  //create new li
+  var li = document.createElement('li');
+  //message text
+  var message = this.name + ': ' + this.text;
+  //updated li text
+  li.textContent = message;
+  return li;
+};
 
 //get button
 var button = document.getElementById('click_event_test');
@@ -13,8 +33,7 @@ button.addEventListener('click', handleClick);
 //event handler
 //handler gets passed event
 function handleClick(event) {
-  alert('HEY');
-  console.log(event.target);
+  clearChat();
 };
 
 var chatForm = document.getElementById('chat_form');
@@ -27,6 +46,39 @@ function handleSubmit(event) {
   //event.target.<name> is the field
   //event.target.<name>.value is the field text
 
-  console.log(event.target.who.value);
-  console.log(event.target.comment.value);
+  //set values to variables so it's not so long in the function call
+  var name = event.target.who.value;
+  var text = event.target.comment.value;
+
+  //create new comment with field values
+  new Comment(name, text);
+  clearChat();
+  //render the chat list
+  renderChat();
+  console.log(comments);
+
+  //reset the fields
+  event.target.who.value = null;
+  event.target.comment.value = null;
 };
+
+//adds all of our comments to the DOM
+function renderChat() {
+  var ul = document.getElementById('comments');
+
+  //iterate over comments, create li, add to list
+  for (var i = 0; i < comments.length; i++) {
+    //each item in the array is a Comment object with
+    //a render method which returns an li
+    var li = comments[i].render();
+    //add the li to the list
+    ul.appendChild(li);
+  }
+}
+
+//clears chat list
+function clearChat() {
+  var ul = document.getElementById('comments');
+  //setting textContent to empty string clears element
+  ul.textContent = '';
+}
