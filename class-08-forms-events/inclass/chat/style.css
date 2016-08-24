@@ -1,0 +1,12 @@
+* {
+  outline: solid blue;
+}
+
+button {
+  border: none;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: rgb(150, 150, 190);
+}
