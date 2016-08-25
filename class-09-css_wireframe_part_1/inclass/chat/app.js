@@ -14,9 +14,9 @@ Comment.prototype.render = function() {
   //create new li
   var li = document.createElement('li');
   //message text
-  var message = this.name + ': ' + this.text;
+  var message = '<span>' + this.name + '</span>: ' + this.text;
   //updated li text
-  li.textContent = message;
+  li.innerHTML = message;
   return li;
 };
 
@@ -79,3 +79,7 @@ function clearChat() {
   //setting textContent to empty string clears element
   ul.textContent = '';
 }
+
+new Comment('slothOne', 'swimming lol');
+new Comment('sloth5000', 'hanging off branches rulez');
+renderChat();

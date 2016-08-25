@@ -1,5 +1,23 @@
-* {
+/** {
   outline: solid blue;
+}*/
+
+html, body {
+  height: 100%;
+}
+form {
+  height: 50px;
+  margin: 0;
+  margin-left: 7px;
+}
+
+form input[type="text"] {
+  border: 1px solid red;
+  width: 375px;
+}
+
+input[type="text"]:first-child {
+  width: 75px;
 }
 
 button {
@@ -9,4 +27,26 @@ button {
 button:hover {
   cursor: pointer;
   background-color: rgb(150, 150, 190);
+}
+
+h1 {
+  text-align: center;
+  height: 50px;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0px;
+  height: 200px;
+}
+
+li span {
+  color: green;
+}
+
+.container {
+  width: 550px;
+  margin: 0 auto;
+  height: 320px;
+  background-color: rgb(200, 220, 200);
 }
