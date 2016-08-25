@@ -47,8 +47,8 @@ function handleSubmit(event) {
   //event.target.<name>.value is the field text
 
   //set values to variables so it's not so long in the function call
-  var name = event.target.who.value;
-  var text = event.target.comment.value;
+  var name = event.target.name.value;
+  var text = event.target.text.value;
 
   //create new comment with field values
   new Comment(name, text);
