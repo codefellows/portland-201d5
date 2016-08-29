@@ -4,26 +4,15 @@
 # Today's Plan: Week 3, Monday Lecture
 
 - Announcements *[15 minutes]*
-  - Project Week is getting closer! Er. Mah. Gerd.
+  - Project Week is getting closer!
   - Thursday: First round of project pitches; remember, think *elevator pitches*.
   - Friday: Second round of project pitches & set project teams; in lecture that day will cover the procedural and operation details you'll need to know
-  - Friday: We will watch the project presentations for the current 301 class. It is not yet known what time of day that those will be, but we'll make it work.
 
-- Discuss the weekly student survey [comments](student-comments.md) *[5 minutes, or so, keep it quick]*
-  - THANK YOU for your feedback! It helps the instructional staff to get a better understanding of what is working and what is not working. There are a lot of things that vary from cohort to cohort.
-  - We're going to go over this less in a verbal context this morning, in the interest of time.
-  - Feedback is welcomed at any time, in any context. Feel free to initiate a conversation or send an email or Slack message or whatever if there is something you want to raise.
-
-- Review of Quizzes 4, 5, and 6. *[30 minutes]*
-
-- [Code Review](#codereview) *[30-45 minutes]*
+- [Code Review](#codereview)
   - Let's look at some of your Salmon Cookie and design comp projects! It's time to show off your work! And raise any questions, too.
 
-*15 minute break*
 
-- Go over readings from weekend *[15-30 minutes]
-
-- [Assignment overview & code demo](#code) *[45-60 minutes]*
+- [Assignment overview & code demo](#code)
 
 ## Readings
 
