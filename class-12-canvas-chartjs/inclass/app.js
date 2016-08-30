@@ -13,14 +13,15 @@ var imageList = document.getElementById('images');
 
 imageList.addEventListener('click', clickHandler);
 
-drawImage();
-drawImage();
-drawImage();
+drawImage(0);
+drawImage(1);
+drawImage(2);
 
 function clickHandler(event) {
   //clear list
   console.log(event.target);
   var matchPath = event.target.getAttribute('src');
+  var arrayOfRandomIndices = randomIndices();
   console.log(matchPath);
   //use event target to determine which image was clicked
   //add to the views of all images displayed
@@ -35,9 +36,9 @@ function clickHandler(event) {
   }
 
   imageList.textContent = '';
-  drawImage();
-  drawImage();
-  drawImage();
+  drawImage(arrayOfRandomIndices[0]);
+  drawImage(arrayOfRandomIndices[1]);
+  drawImage(arrayOfRandomIndices[2]);
 }
 
 function randomIndices() {
@@ -55,14 +56,13 @@ function randomIndices() {
 }
 
 
-function drawImage() {
+function drawImage(index) {
   //use the image path for the source
   //(image.path)
   var img = document.createElement('img');
   var li = document.createElement('li');
   var imageList = document.getElementById('images');
-  var randomIndex = Math.floor(Math.random() * imagePaths.length);
-  var randomPath = images[randomIndex].path;
+  var randomPath = images[index].path;
 
   //set src
   img.setAttribute('src', randomPath);
