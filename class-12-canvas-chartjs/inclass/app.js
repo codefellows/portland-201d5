@@ -2,6 +2,7 @@
 
 var imagePaths = ['bag.jpg', 'banana.jpg', 'scissors.jpg', 'pen.jpg'];
 var images = [];
+var currentImageIndices = [0, 1, 2];
 
 for (var i = 0; i < imagePaths.length; i++) {
   var name = imagePaths[i];
@@ -23,6 +24,11 @@ function clickHandler(event) {
   var matchPath = event.target.getAttribute('src');
   var arrayOfRandomIndices = randomIndices();
   console.log(matchPath);
+  for(var i = 0; i < currentImageIndices.length; i++) {
+    var currentIndex = currentImageIndices[i];
+    var displayedObject = images[currentIndex];
+    displayedObject.views += 1;
+  }
   //use event target to determine which image was clicked
   //add to the views of all images displayed
   //add to the clicks of just the clicked image
@@ -34,11 +40,12 @@ function clickHandler(event) {
       currentImageObject.clicks += 1;
     };
   }
-
+  currentImageIndices = arrayOfRandomIndices;
   imageList.textContent = '';
   drawImage(arrayOfRandomIndices[0]);
   drawImage(arrayOfRandomIndices[1]);
   drawImage(arrayOfRandomIndices[2]);
+  console.log(images);
 }
 
 function randomIndices() {
