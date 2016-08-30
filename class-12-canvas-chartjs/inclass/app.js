@@ -15,6 +15,7 @@ imageList.addEventListener('click', clickHandler);
 
 drawImage();
 drawImage();
+drawImage();
 
 function clickHandler(event) {
   //clear list
@@ -29,13 +30,30 @@ function clickHandler(event) {
     // console.log('Images', i, images[i]);
     if (currentImageObject.path === matchPath) {
       console.log('found it!1', currentImageObject);
+      currentImageObject.clicks += 1;
     };
   }
 
   imageList.textContent = '';
   drawImage();
   drawImage();
+  drawImage();
 }
+
+function randomIndices() {
+  var firstRandomIndex = Math.floor(Math.random() * images.length);
+  var secondRandomIndex = Math.floor(Math.random() * images.length);
+  while(firstRandomIndex === secondRandomIndex) {
+    secondRandomIndex = Math.floor(Math.random() * images.length);
+  }
+  var thirdRandomIndex = Math.floor(Math.random() * images.length);
+  while(thirdRandomIndex === firstRandomIndex
+      || thirdRandomIndex === secondRandomIndex) {
+    thirdRandomIndex = Math.floor(Math.random() * images.length);
+  }
+  return [firstRandomIndex, secondRandomIndex, thirdRandomIndex];
+}
+
 
 function drawImage() {
   //use the image path for the source

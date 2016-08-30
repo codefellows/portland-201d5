@@ -1,0 +1,10 @@
+ul {
+  list-style: none;
+}
+ul li {
+  display: inline-block;
+  width: 300px;
+}
+ul li img {
+  max-width: 300px;
+}
