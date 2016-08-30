@@ -16,10 +16,11 @@ imageList.addEventListener('click', clickHandler);
 drawImage();
 drawImage();
 
-function clickHandler(e) {
+function clickHandler(event) {
   //clear list
-  console.log(e.target);
-  var matchPath = 'banana.jpg';
+  console.log(event.target);
+  var matchPath = event.target.getAttribute('src');
+  console.log(matchPath);
   //use event target to determine which image was clicked
   //add to the views of all images displayed
   //add to the clicks of just the clicked image
@@ -27,7 +28,7 @@ function clickHandler(e) {
     var currentImageObject = images[i];
     // console.log('Images', i, images[i]);
     if (currentImageObject.path === matchPath) {
-      // console.log('found it!1', currentImageObject);
+      console.log('found it!1', currentImageObject);
     };
   }
 
@@ -43,10 +44,10 @@ function drawImage() {
   var li = document.createElement('li');
   var imageList = document.getElementById('images');
   var randomIndex = Math.floor(Math.random() * imagePaths.length);
-  var randomPath = imagePaths[randomIndex];
+  var randomPath = images[randomIndex].path;
 
   //set src
-  img.setAttribute('src', 'imgs/' + randomPath);
+  img.setAttribute('src', randomPath);
 
   //add to dom
   li.appendChild(img);
@@ -57,7 +58,7 @@ function Image(name, path) {
   this.views = 0;
   this.clicks = 0;
   this.name = name;
-  this.path = path;
+  this.path = 'imgs/' + path;
 
   images.push(this);
 }
