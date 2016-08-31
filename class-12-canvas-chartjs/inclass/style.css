@@ -8,3 +8,12 @@ li {
 li img {
   max-width: 300px;
 }
+
+#chart_container {
+  width: 800px;
+  height: 400px;
+}
+
+canvas {
+  
+}

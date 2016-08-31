@@ -89,6 +89,7 @@ function Image(name, path) {
 }
 
 var ctx = document.getElementById('chart_canvas');
+
 new Chart(ctx, {
   type: 'bar',
   data: {
