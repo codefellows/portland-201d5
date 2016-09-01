@@ -101,69 +101,117 @@ function clickHandler(event) {
 
 //function to generate an array of indices to display
 function randomIndices() {
+  //create the first random index
   var firstRandomIndex = Math.floor(Math.random() * images.length);
+
+  //create the second random index
   var secondRandomIndex = Math.floor(Math.random() * images.length);
+
+  //while the first index and the second index are the same regenerate
+  //the second index
   while(firstRandomIndex === secondRandomIndex) {
     secondRandomIndex = Math.floor(Math.random() * images.length);
   }
+
+  //generate the third index
   var thirdRandomIndex = Math.floor(Math.random() * images.length);
+
+  //while the third index is the same as the first index or the
+  //second index regenerate the third index
   while(thirdRandomIndex === firstRandomIndex
       || thirdRandomIndex === secondRandomIndex) {
     thirdRandomIndex = Math.floor(Math.random() * images.length);
   }
+
+  //return an array of all three
   return [firstRandomIndex, secondRandomIndex, thirdRandomIndex];
 }
 
 
 function drawImage(index) {
-  //use the image path for the source
-  //(image.path)
+  //create an image element and an li element for our new image
   var img = document.createElement('img');
   var li = document.createElement('li');
+
+  //get the list where the images are being stored
   var imageList = document.getElementById('images');
-  var randomPath = images[index].path;
 
-  //set src
-  img.setAttribute('src', randomPath);
+  //use the index passed into the draw image function to get an
+  //image object from the images array and set the path property
+  //of that object to the imagePath variable.
+  var imagePath = images[index].path;
 
-  //add to dom
+  //set the src attribute of the img node we created on line 133
+  //to the path that we got from the image object
+  img.setAttribute('src', imagePath);
+
+  //add the img node to the li node and the li node to the list
+  //which adds the node to the dom
   li.appendChild(img);
   imageList.appendChild(li);
 }
 
+//constructor function for the Image which takes a name and a path
+//as an argument
 function Image(name, path) {
+  //start the views and clicks for the new image object at 0
   this.views = 0;
   this.clicks = 0;
+  //set the name to the name that's passed into the function
   this.name = name;
+  //set the path to the directory name plus the filename. This gives
+  //us the full path to the file that we can use for the img src
   this.path = 'imgs/' + path;
 
+  //push the new image to the images array
   images.push(this);
 }
 
+//get the button to show the chart from the dom and store it on chartButton
 var chartButton = document.getElementById('show_chart');
+
+//add a click event to the the button so we can show the chart
 chartButton.addEventListener('click', chartClickHandler);
 
+//create a click handler for our click event
 function chartClickHandler() {
+  //the next few lines represent us saving the image objects to localStorage
+  //first turn the image array into a JSON string so that we can store it
   var imageJSON = JSON.stringify(images);
+
+  //next use the setItem method on localstorage to set the images property
+  //to our JSON string
   localStorage.setItem('images', imageJSON);
 
+  //draw the chart
   drawChart();
+
+  //set the disabled property on the chart button to true which turns off the button
   chartButton.disabled = true;
 }
 
+//function to render the chart
 function drawChart() {
+  //create arrays for the names of the images and for the click totals of the images.
+  //we'll pass these to the chart options object for the bars.
   var imageNames = [];
   var imageClicks = [];
 
   for (var i = 0; i < images.length; i++) {
+    //loop through the images array and add each name to the imageNames array and each
+    //amount of clicks to the imageClicks array
     imageNames.push(images[i].name);
     imageClicks.push(images[i].clicks);
   }
 
+  //get the context for the chart
   var ctx = document.getElementById('chart_canvas');
 
+  //call the Chart constructor passing in the context and an options object
   new Chart(ctx, {
+    //set the chart type
     type: 'bar',
+    //pass in the image names as the labels and the data in the datasets
     data: {
       labels: imageNames,
       datasets: [{
