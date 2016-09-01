@@ -14,6 +14,6 @@ li img {
   height: 400px;
 }
 
-canvas {
-  
+.hidden {
+  visibility: hidden;
 }

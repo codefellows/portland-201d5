@@ -3,10 +3,13 @@
 var imagePaths = ['bag.jpg', 'banana.jpg', 'scissors.jpg', 'pen.jpg'];
 var images = [];
 var currentImageIndices = [0, 1, 2];
+var totalClicks = 0;
 
 for (var i = 0; i < imagePaths.length; i++) {
-  var name = imagePaths[i];
-  new Image(null, name);
+  var path = imagePaths[i];
+  var name = path.split('.')[0];
+
+  new Image(name, path);
 }
 
 //create elements
@@ -20,15 +23,22 @@ drawImage(2);
 
 function clickHandler(event) {
   //clear list
-  console.log(event.target);
+
+  if (totalClicks >= 5) {
+    var chartButton = document.getElementById('show_chart');
+    chartButton.classList.remove('hidden');
+    return;
+  }
+
   var matchPath = event.target.getAttribute('src');
   var arrayOfRandomIndices = randomIndices();
-  console.log(matchPath);
   for(var i = 0; i < currentImageIndices.length; i++) {
     var currentIndex = currentImageIndices[i];
     var displayedObject = images[currentIndex];
     displayedObject.views += 1;
   }
+
+  totalClicks += 1;
   //use event target to determine which image was clicked
   //add to the views of all images displayed
   //add to the clicks of just the clicked image
@@ -88,23 +98,41 @@ function Image(name, path) {
   images.push(this);
 }
 
-var ctx = document.getElementById('chart_canvas');
+var chartButton = document.getElementById('show_chart');
+chartButton.addEventListener('click', chartClickHandler);
 
-new Chart(ctx, {
-  type: 'bar',
-  data: {
-    labels: [images[0].path, images[1].path, images[2].path],
-    datasets: [{
-      data: [images[0].clicks, images[1].clicks, images[2].clicks]
-    }]
-  },
-  options: {
-    scales: {
-      yAxes: [{
-        ticks: {
-          beginAtZero: true
-        }
-      }]
-    }
+function chartClickHandler() {
+  drawChart();
+  chartButton.disabled = true;
+}
+
+function drawChart() {
+  var imageNames = [];
+  var imageClicks = [];
+
+  for (var i = 0; i < images.length; i++) {
+    imageNames.push(images[i].name);
+    imageClicks.push(images[i].clicks);
   }
-});
+
+  var ctx = document.getElementById('chart_canvas');
+
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: imageNames,
+      datasets: [{
+        data: imageClicks
+      }]
+    },
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
+    }
+  });
+}
